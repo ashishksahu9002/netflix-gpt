@@ -41,7 +41,7 @@ const Login = () => {
           })
             .then(() => {
               // Profile updated!
-              console.log(user);
+              // console.log(user);
               const { uid, email, displayName } = auth.currentUser;
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
@@ -69,7 +69,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("Signed in : ", user);
+          // console.log("Signed in : ", user);
         })
         .catch((error) => {
           const errorCode = error.code;
