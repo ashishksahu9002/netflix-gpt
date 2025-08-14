@@ -13,27 +13,26 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-      })
+      .then(() => {})
       .catch((error) => {
         // An error happened.
         console.log(error);
       });
-    };
-    
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const { uid, email, displayName } = user;
-          dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-          navigate("/browse");
-        } else {
-          dispatch(removeUser());
-          navigate("/");
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
       }
     });
 
-    return ()=> unsubscribe()
+    return () => unsubscribe();
   }, []);
 
   return (

@@ -5,7 +5,8 @@ const conf = {
   storageBucket: String(process.env.REACT_APP_FIREBASE_STORAGE_BUCKET),
   messagingSenderId: String(process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID),
   appId: String(process.env.REACT_APP_FIREBASE_APP_ID),
-  measurementId: String(process.env.REACT_APP_FIREBASE_MEASUREMENT_ID)
-}
+  measurementId: String(process.env.REACT_APP_FIREBASE_MEASUREMENT_ID),
+  tmdbApiAccessToken: String(process.env.REACT_APP_TMDB_API_READ_ACCESS_TOKEN),
+};
 
-export default conf
+export default conf;
