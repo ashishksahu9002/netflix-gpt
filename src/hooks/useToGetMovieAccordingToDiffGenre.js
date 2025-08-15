@@ -15,8 +15,6 @@ const useToGetMovieAccordingToDiffGenre = () => {
 
     const data = await fetch(url, API_OPTIONS);
     const json = await data.json();
-    if(movieGenre.includes('romance'))
-    console.log(movieGenre + " : ", json);
     dispatch(
       addMoviesToMovieGenre({
         key: movieGenre,

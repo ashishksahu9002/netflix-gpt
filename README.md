@@ -29,6 +29,14 @@
   - Update Store with Trailer Video Data
   - Embedded the Yotube video and make it autoplay and mute
   - Tailwind Classes to make Main Container look awesome
+  - Build Secondary Component
+  - Build Movie List
+  - build Movie Card
+  - TMDB Image CDN URL
+  - Made the Browsre page amazing with Tailwind CSS
+  - usePopularMovies Custom hook
+  - Created custom hook for fetching movies genre and to fetch movies according to different genres
+
 
 # Features
   - Login/Sign Up

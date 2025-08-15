@@ -5,17 +5,28 @@ import SecondaryContainer from "./SecondaryContainer";
 import useMovieGenre from "../hooks/useMovieGenre";
 import usePopulateInitailStateWithDiffGenres from "../hooks/usePopulateInitailStateWithDiffGenres";
 import useToGetMovieAccordingToDiffGenre from "../hooks/useToGetMovieAccordingToDiffGenre";
+import GptSearchPage from "./GptSearchPage";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
-  useMovieGenre()
-  usePopulateInitailStateWithDiffGenres()
-  useToGetMovieAccordingToDiffGenre()
+  useMovieGenre();
+  usePopulateInitailStateWithDiffGenres();
+  useToGetMovieAccordingToDiffGenre();
+
+  const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
 
   return (
     <div>
       <Header />
-      <MainContainer />
-      <SecondaryContainer />
+      {showGptSearch ? (
+        <GptSearchPage />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
+
       {/* 
           Main Container
             - Video Background
