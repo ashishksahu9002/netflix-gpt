@@ -1,11 +1,15 @@
 import React from "react";
 import Header from "./Header";
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import useMovieGenre from "../hooks/useMovieGenre";
+import usePopulateInitailStateWithDiffGenres from "../hooks/usePopulateInitailStateWithDiffGenres";
+import useToGetMovieAccordingToDiffGenre from "../hooks/useToGetMovieAccordingToDiffGenre";
 
 const Browse = () => {
-  useNowPlayingMovies();
+  useMovieGenre()
+  usePopulateInitailStateWithDiffGenres()
+  useToGetMovieAccordingToDiffGenre()
 
   return (
     <div>
