@@ -7,6 +7,7 @@ const conf = {
   appId: String(process.env.REACT_APP_FIREBASE_APP_ID),
   measurementId: String(process.env.REACT_APP_FIREBASE_MEASUREMENT_ID),
   tmdbApiAccessToken: String(process.env.REACT_APP_TMDB_API_READ_ACCESS_TOKEN),
+  openaiApiKey: String(process.env.REACT_APP_OPENAI_API_KEY),
 };
 
 export default conf;

@@ -68,7 +68,7 @@ const Header = () => {
             onClick={handleGptSearchToggle}
           >
             <span className="block group-active:[transform:translate3d(0,1px,0)]">
-              GPT Search
+              {showGptSearch ? 'Home Page' : 'GPT Search'}
             </span>
           </button>
           <img src={USER_LOGO_URL} alt="user logo" className="h-12 w-12 p-1" />

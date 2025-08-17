@@ -36,6 +36,9 @@
   - Made the Browsre page amazing with Tailwind CSS
   - usePopularMovies Custom hook
   - Created custom hook for fetching movies genre and to fetch movies according to different genres
+  - GPT Search Page
+  - GPT Search Bar
+  - (BONUS) Multi-language Feature in our App
 
 
 # Features
