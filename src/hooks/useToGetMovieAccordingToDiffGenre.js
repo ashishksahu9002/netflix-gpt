@@ -7,6 +7,7 @@ import { addMoviesToMovieGenre } from "../utils/movieSlice";
 const useToGetMovieAccordingToDiffGenre = () => {
   const dispatch = useDispatch();
   const genreList = useSelector((store) => store.movies?.genreList);
+  const movies = useSelector((store) => store.movies)
 
   const getMovieAccordingToDiffGenre = async (id, genreUrlKey, movieGenre) => {
     const url1 = `https://api.themoviedb.org/3/movie/${genreUrlKey}?language=en-US&page=1`;
@@ -29,8 +30,7 @@ const useToGetMovieAccordingToDiffGenre = () => {
       const { name, id } = genre;
       const movieGenre = toCamelCase(name) + "Movies";
       const genreUrlKey = name.toLowerCase().replaceAll(" ", "_");
-
-      getMovieAccordingToDiffGenre(id, genreUrlKey, movieGenre);
+      !movies[movieGenre] && getMovieAccordingToDiffGenre(id, genreUrlKey, movieGenre);
     });
   }, [genreList]);
 };

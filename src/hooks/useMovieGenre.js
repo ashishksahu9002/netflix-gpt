@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addGenreList } from "../utils/movieSlice";
 import toCamelCase from "../utils/toCamelCase";
 
 const useMovieGenre = () => {
   // Fetch Data from TMBD api and update store
-  const genreList = [
+  const genreListExtra = [
     {
       id: 3,
       name: "Now Playing",
@@ -27,13 +27,15 @@ const useMovieGenre = () => {
 
   const dispatch = useDispatch();
 
+  const genreList = useSelector(store => store.movies?.genreList)
+
   const getNowPlayingMoview = async () => {
     const data = await fetch(
       "https://api.themoviedb.org/3/genre/movie/list",
       API_OPTIONS
     );
     const json = await data.json();
-    json.genres = [...genreList, ...json.genres].map((genre) => ({
+    json.genres = [...genreListExtra, ...json.genres].map((genre) => ({
       ...genre,
       movieGenre: toCamelCase(genre.name) + "Movies",
       genreUrlKey: genre.name.toLowerCase().replaceAll(" ", "_"),
@@ -42,7 +44,7 @@ const useMovieGenre = () => {
   };
 
   useEffect(() => {
-    getNowPlayingMoview();
+    !genreList && getNowPlayingMoview();
   }, []);
 };
 
