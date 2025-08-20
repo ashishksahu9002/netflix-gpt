@@ -5,7 +5,7 @@ import SecondaryContainer from "./SecondaryContainer";
 import useMovieGenre from "../hooks/useMovieGenre";
 import usePopulateInitailStateWithDiffGenres from "../hooks/usePopulateInitailStateWithDiffGenres";
 import useToGetMovieAccordingToDiffGenre from "../hooks/useToGetMovieAccordingToDiffGenre";
-import GptSearchPage from "./GptSearchPage";
+import GptSearchPage from "./GPT/GptSearchPage";
 import { useSelector } from "react-redux";
 
 const Browse = () => {
