@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
 import toCamelCase from "../utils/toCamelCase";
-import { addMoviesToMovieGenre } from "../utils/movieSlice";
+import { addMoviesToMovieGenre, addMovieGenreToState } from "../utils/movieSlice";
 
 const useToGetMovieAccordingToDiffGenre = () => {
   const dispatch = useDispatch();
@@ -29,6 +29,7 @@ const useToGetMovieAccordingToDiffGenre = () => {
     genreList?.map((genre) => {
       const { name, id } = genre;
       const movieGenre = toCamelCase(name) + "Movies";
+      dispatch(addMovieGenreToState(movieGenre));
       const genreUrlKey = name.toLowerCase().replaceAll(" ", "_");
       !movies[movieGenre] && getMovieAccordingToDiffGenre(id, genreUrlKey, movieGenre);
     });

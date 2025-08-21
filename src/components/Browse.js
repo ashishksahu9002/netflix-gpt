@@ -3,20 +3,23 @@ import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import useMovieGenre from "../hooks/useMovieGenre";
-import usePopulateInitailStateWithDiffGenres from "../hooks/usePopulateInitailStateWithDiffGenres";
+// import usePopulateInitailStateWithDiffGenres from "../hooks/usePopulateInitailStateWithDiffGenres";
 import useToGetMovieAccordingToDiffGenre from "../hooks/useToGetMovieAccordingToDiffGenre";
 import GptSearchPage from "./GPT/GptSearchPage";
 import { useSelector } from "react-redux";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 
 const Browse = () => {
-  useMovieGenre();
-  usePopulateInitailStateWithDiffGenres();
-  useToGetMovieAccordingToDiffGenre();
+  // useMovieGenre();
+  // usePopulateInitailStateWithDiffGenres();
+  // useToGetMovieAccordingToDiffGenre();
+
+  useNowPlayingMovies();
 
   const showGptSearch = useSelector((store) => store.gpt?.showGptSearch);
 
   return (
-    <div>
+    <div className="w-screen min-h-screen bg-black">
       <Header />
       {showGptSearch ? (
         <GptSearchPage />

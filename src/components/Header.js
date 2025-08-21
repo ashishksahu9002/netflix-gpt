@@ -1,5 +1,9 @@
-import React, { useEffect } from "react";
-import { LOGO_URL, SUPPORTED_LANGUAGES, USER_LOGO_URL } from "../utils/constants";
+import React, { useEffect, useState } from "react";
+import {
+  LOGO_URL,
+  SUPPORTED_LANGUAGES,
+  USER_LOGO_URL,
+} from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
@@ -10,6 +14,7 @@ import { toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
@@ -38,6 +43,14 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // scroll threshold
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleGptSearchToggle = () => {
     dispatch(toggleGptSearchView());
   };
@@ -47,7 +60,11 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between items-center">
+    <div
+      className={`fixed top-0 left-0 w-screen px-8 py-2 z-50 flex justify-between items-center transition-colors duration-300 ${
+        isScrolled ? "bg-black" : "bg-gradient-to-b from-black/80"
+      }`}
+    >
       <img src={LOGO_URL} alt="logo" className="w-44" />
       {user && (
         <div className="flex items-center">
@@ -68,7 +85,7 @@ const Header = () => {
             onClick={handleGptSearchToggle}
           >
             <span className="block group-active:[transform:translate3d(0,1px,0)]">
-              {showGptSearch ? 'Home Page' : 'GPT Search'}
+              {showGptSearch ? "Home Page" : "GPT Search"}
             </span>
           </button>
           <img src={USER_LOGO_URL} alt="user logo" className="h-12 w-12 p-1" />
